@@ -91,6 +91,16 @@ if select=='Upload & Extracting':
   if button1:
     mydb=sqlite3.connect('bizcards2.db')
     cursor= mydb.cursor()
+    cursor.execute("CREATE TABLE if not exists bizcardetails3 ("
+                 "name VARCHAR(255),"
+                 "designation VARCHAR(255),"
+                 "company_name VARCHAR(255),"
+                 "contact VARCHAR(255) PRIMARY KEY,"
+                 "email VARCHAR(255),"
+                 "website VARCHAR(255),"
+                 "address VARCHAR(255),"
+                 "pincode VARCHAR(255),"
+                 "image LONGBLOB )")
     mydb.commit()
     indata=concats.to_sql('bizcardetails',mydb,index=False ,if_exists='append')
     mydb.commit()
